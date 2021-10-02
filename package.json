@@ -1,0 +1,23 @@
+{
+  "name": "backrem-service",
+  "version": "1.0.0",
+  "description": "Change images background with another images service",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mikhail Makarov",
+  "license": "ISC",
+  "dependencies": {
+    "backrem": "^1.1.0",
+    "express": "^4.17.1",
+    "multer": "^1.4.3",
+    "nanoid": "^3.1.28",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
