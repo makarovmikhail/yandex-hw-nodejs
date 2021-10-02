@@ -16,7 +16,6 @@ MyCustomStorage.prototype._handleFile = function _handleFile(req, file, cb) {
     file.stream.pipe(outStream);
     outStream.on("error", cb);
     outStream.on("finish", function () {
-      console.log(file);
       db.insert(
         new File(
           file.imageId,

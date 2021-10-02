@@ -60,7 +60,6 @@ app.get("/merge", (req, res) => {
   const back = req.query.back;
   const color = JSON.parse(req.query.color);
   const threshold = Number(req.query.threshold);
-  console.log(color.length);
 
   const frontImage = db.findOne(front);
   const backImage = db.findOne(back);
@@ -82,7 +81,6 @@ app.get("/merge", (req, res) => {
       readableStream
         .pipe(writableStream)
         .on("error", (err) => {
-          console.log(err);
           res.json({status: err});
         })
         .on("finish", () => {

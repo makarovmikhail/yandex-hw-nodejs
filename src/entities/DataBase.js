@@ -16,15 +16,7 @@ class Database extends EventEmitter {
   }
 
   async initFromDump() {
-    fs.readdir(imagesFolder, (err, files) => {
-      if (err) throw err;
-
-      for (const file of files) {
-        fs.unlink(path.join(imagesFolder, file), (err) => {
-          if (err) throw err;
-        });
-      }
-    });
+    
 
     if (existsSync(dbDumpFile) === false) {
       return;
