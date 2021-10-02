@@ -1,3 +1,4 @@
+const http = require("http");
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
@@ -90,6 +91,8 @@ app.get("/merge", (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
+const server = http.createServer(app);
+
+server.listen(PORT, () => {
   console.log(`Example app listening at http://localhost:${PORT}`);
 });
