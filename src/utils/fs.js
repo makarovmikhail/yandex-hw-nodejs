@@ -1,6 +1,6 @@
 const {rejects} = require("assert");
 const fs = require("fs");
-const {resolve} = require("path/posix");
+const {resolve} = require("path");
 const util = require("util");
 
 const writeFileAsync = util.promisify(fs.writeFile);
