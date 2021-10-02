@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
-const Jpeg = require("../entities/Jpeg");
-const db = require("../entities/DataBase");
+const File = require("../entities/File");
+const db = require("../entities/Database");
 
 function MyCustomStorage(opts) {
   this.getDestination = opts.destination || getDestination;
@@ -16,7 +16,16 @@ MyCustomStorage.prototype._handleFile = function _handleFile(req, file, cb) {
     file.stream.pipe(outStream);
     outStream.on("error", cb);
     outStream.on("finish", function () {
-      db.insert(new Jpeg(file.imageId, outStream.bytesWritten, Date.now()));
+      console.log(file);
+      db.insert(
+        new File(
+          file.imageId,
+          outStream.bytesWritten,
+          Date.now(),
+          Buffer.from(JSON.stringify(file), "utf-8"),
+          file.mimetype
+        )
+      );
       cb(null, {
         path: path,
         size: outStream.bytesWritten

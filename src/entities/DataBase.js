@@ -6,7 +6,7 @@ const {dbDumpFile} = require("../config");
 const path = require("path");
 // const {writeFile} = require("../utils/fs");
 // const {prettifyJsonToString} = require("../utils/prettifyJsonToString");
-const Jpeg = require("./Jpeg");
+const File = require("./File");
 
 class Database extends EventEmitter {
   constructor() {
@@ -38,7 +38,7 @@ class Database extends EventEmitter {
       for (let id of dump.images) {
         const image = dump.images[id];
 
-        this.images.push(new Jpeg(image.id, image.size, image.uploadedAt));
+        this.images.push(new File(image.id, image.size, image.uploadedAt));
       }
     }
   }

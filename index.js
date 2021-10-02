@@ -2,8 +2,8 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const {generateId} = require("./src/utils/generateId");
-const Jpeg = require("./src/entities/Jpeg");
-const db = require("./src/entities/DataBase");
+const File = require("./src/entities/File");
+const db = require("./src/entities/Database");
 const backrem = require("backrem");
 const fs = require("fs");
 
@@ -14,7 +14,7 @@ const storage = new MyCustomStorage({
     file.imageId = imageId;
     cb(
       null,
-      path.join(__dirname, "./images", new Jpeg(imageId).getOriginalName())
+      path.join(__dirname, "./images", new File(imageId).getOriginalFileName())
     );
   }
 });
@@ -43,7 +43,7 @@ app.delete("/image/:id", (req, res) => {
   if (!image) {
     res.json({stutus: "error"});
   } else {
-    removeFile(path.join(__dirname, "./images", image.getOriginalName())).then(
+    removeFile(path.join(__dirname, "./images", image.getOriginalFileName())).then(
       (result) => {
         db.remove(imageId);
         res.json({status: "ok"});
