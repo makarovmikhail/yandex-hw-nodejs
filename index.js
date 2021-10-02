@@ -30,7 +30,7 @@ app.post("/upload", upload.single("image"), (req, res) => {
 });
 
 app.get("/list", (req, res) => {
-  res.json(db.images);
+  res.json([]);
 });
 
 app.get("/image/:id", (req, res) => {
